@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <link rel="stylesheet" href="./assets/toastr/toastr.min.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -29,14 +30,14 @@
       <ul class="menu-icons">
         <li><i class="bi bi-person"></i></li>
         <li><i class="bi bi-search-heart"></i></li>
-        <li class="basket-icon">
-          <i class="bi bi-bag"></i> <span class="basket-count">2</span>
+        <li class="basket-icon" onclick="toggleModal()">
+          <i class="bi bi-bag"></i> <span class="basket-count"></span>
         </li>
       </ul>
     </nav>
 
     <section class="slider">
-      <div id="carouselExample" class="carousel slide">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
@@ -88,7 +89,7 @@
         <li>Novel</li>
         <li>Comic</li>
       </ul>
-      <div class="row">
+      <div class="row book-list">
         <div class="col-5 offset-2 my-5">
           <div class="row book-card">
             <div class="col-6">
@@ -105,7 +106,7 @@
                 <span class="fos black fs-4 fw-bold">Nutuk</span> <br />
                 <span class="fos gray fs-5">Mustafa Kemal Ataturk</span> <br />
                 <span class="book-stars">
-                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star-fill active"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -393,29 +394,18 @@
             </div>
           </div>
         </div>
-        
       </div>
     </section>
 
     <div class="basket-modal">
       <div class="basket-items">
-        <i class="bi bi-x"></i>
+        <i class="bi bi-x" onclick="toggleModal()"></i>
         <h2 class="basket-title mb-4">Your Items</h2>
         <ul class="basket-list">
           <li class="basket-item my-4">
-            <img src="assets/images/books/nutuk.jpg" width="100" height="100" alt="">
-            <div class="basket-item-info">
-              <h3 class="book-name">Nutuk</h3>
-              <span class="book-price">45 TL</span> <br>
-              <span class="book-remove">remove</span>
-            </div>
-            <div class="book-count">
-              <span class="decrease">-</span>
-              <span class="mx-1">2</span>
-              <span class="increase">+</span>
-            </div>
+            There is no item, return to store to purchase
           </li>
-
+          <!-- 
           <li class="basket-item my-4">
             <img src="assets/images/books/nutuk.jpg" width="100" height="100" alt="">
             <div class="basket-item-info">
@@ -456,13 +446,11 @@
               <span class="mx-1">2</span>
               <span class="increase">+</span>
             </div>
-          </li>
+          </li>  -->
         </ul>
         <div class="basket-total">
-
-          <span class="fw-bold mb-3 fs-4">Total : 348 TL </span>
+          <span class="fw-bold mb-3 fs-4 total-price"></span>
           <button class="btn-purple text-uppercase">Checkout</button>
-
         </div>
       </div>
     </div>
@@ -472,6 +460,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/toastr/toastr.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -10,6 +10,7 @@
   --black: #1c2a39;
   --gray: #5c6a79;
   --purple: #4c3db2;
+  --transition: all 250ms ease-in-out;
 }
 .fos {
   font-family: 'Open Sans', sans-serif;
@@ -81,6 +82,10 @@
   font-weight: bold;
 }
 
+.basket-count:empty {
+  display: none;
+}
+
 .slider {
   width: 80%;
   margin-left: auto;
@@ -98,20 +103,28 @@
 }
 
 .book-card {
-  height: 400px !important;
+  height: 350px !important;
 }
 
-.book-stars i {
-  color: goldenrod;
+.book-card img {
+  height: 350px !important;
+}
+
+.book-stars .bi-star-fill,
+.book-stars .bi-star {
+  color: #eeedf5;
+
   font-size: 1.2rem;
   margin-right: 5px;
 }
-
-.book-stars .bi .bi-star {
+.book-stars .bi-star-fill.active {
+  color: goldenrod;
+}
+/* .book-stars .bi-star {
   color: #eeedf5;
   font-size: 1.2rem;
   margin-right: 5px;
-}
+} */
 
 .book-desription {
   display: -webkit-box;
@@ -133,7 +146,8 @@
   font-size: 1rem;
   font-weight: bold;
   background-color: transparent;
-  transition: all 250ms ease-in-out;
+  transition: var(--transition);
+  padding: 5px 0;
 }
 
 .btn-purple:hover {
@@ -189,12 +203,19 @@
 }
 
 .basket-modal {
+  opacity: 0;
   position: fixed;
   left: 0;
   top: 0;
   background-color: #5c6a7950;
   width: 100%;
   height: 100%;
+  z-index: -1;
+  transition: var(--transition);
+}
+
+.basket-modal.active {
+  opacity: 1;
   z-index: 999;
 }
 
@@ -204,6 +225,11 @@
   height: 100%;
   float: right;
   position: relative;
+  transition: var(--transition);
+}
+
+.basket-modal.active .basket-items {
+  width: 450px;
 }
 
 .basket-items .bi-x {
@@ -220,6 +246,7 @@
   margin-top: 5rem;
   text-align: center;
   font-weight: bold;
+  user-select: none;
 }
 
 .basket-list {
@@ -233,10 +260,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
 }
 
 .basket-item-info {
   width: 250px;
+  user-select: none;
 }
 
 .basket-item-info .book-name {
@@ -253,27 +282,33 @@
   color: var(--gray);
 }
 
-.basket-item .book-count{
+.basket-item .book-count {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--black);
+  user-select: none;
 }
 
 .book-count .decrease,
-.book-count .increase{
+.book-count .increase {
   color: var(--purple);
   cursor: pointer;
 }
 
-.basket-total{
+.basket-total {
   display: flex;
   flex-direction: column;
   position: absolute;
   bottom: 5%;
   align-items: center;
   width: inherit;
+  user-select: none;
 }
 
-.basket-total button{
+.basket-total button {
   width: 250px;
+}
+
+.total-price:empty + .btn-purple {
+  display: none;
 }
